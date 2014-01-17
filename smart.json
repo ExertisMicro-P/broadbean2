@@ -2,6 +2,8 @@
   "packages": {
     "bootstrap3-less": {},
     "iron-router": {},
-    "spin": {}
+    "spin": {},
+    "xml2js": {},
+    "bootstrap-3": {}
   }
 }

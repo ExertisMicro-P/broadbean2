@@ -4,7 +4,9 @@
     "basePackages": {
       "bootstrap3-less": {},
       "iron-router": {},
-      "spin": {}
+      "spin": {},
+      "xml2js": {},
+      "bootstrap-3": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -21,6 +23,21 @@
         "git": "https://github.com/SachaG/meteor-spin.git",
         "tag": "v0.2.2",
         "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
+      },
+      "xml2js": {
+        "git": "https://github.com/peerlibrary/meteor-xml2js.git",
+        "tag": "v0.2.8.4",
+        "commit": "98ba391239dd79901a7718593b48c1a7e6b0f7b2"
+      },
+      "bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
+        "tag": "v0.3.7",
+        "commit": "5dd0d142c870647b910be80bc777b96f0dd45e5e"
+      },
+      "blocking": {
+        "git": "https://github.com/peerlibrary/meteor-blocking.git",
+        "tag": "v0.4.0",
+        "commit": "e25a0be72e771b317b26d2bb5758c983bdcef23c"
       }
     }
   }

@@ -6,6 +6,8 @@
 standard-app-packages
 insecure
 preserve-inputs
-bootstrap3-less
 iron-router
 spin
+xml2js
+less
+bootstrap-3

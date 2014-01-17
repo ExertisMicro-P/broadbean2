@@ -1,8 +1,16 @@
 <template name="jobItem">
-  <div class="job">
-    <div class="job-content">
-      <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-    </div>
-    <a href="{{pathFor 'jobPage'}}" class="discuss btn">Discuss</a>
-  </div>
+	<div class="well">
+		<div class="row">
+			<div class="col-md-8">
+				<h3>{{job_title}}</h3>
+				<h4>{{job_location}}</h4>
+			</div>
+			<div class="col-md-4">
+				<p>
+					{{job_reference}}
+				</p>
+				<a href="{{pathFor 'jobPage'}}" class="discuss btn btn-primary"> <span class="glyphicon glyphicon-search"></span>&nbsp;View Details </a>
+			</div>
+		</div>
+	</div>
 </template>

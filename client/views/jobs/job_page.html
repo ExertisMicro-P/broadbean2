@@ -1,0 +1,61 @@
+<template name="jobPage">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="well">
+				<div class="row">
+					<div class="col-md-9">
+						<h1>{{job_title}}</h1>
+					</div>
+					<div class="col-md-2">
+						<a href="{{application_url}}" class="btn btn-primary">Apply Online</a>
+					</div>
+				</div>
+				<h2> {{#each getSkills job_skills}} <span class="label label-primary">{{this}}</span> {{/each}} </h2>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="well">
+				<p>
+					{{job_type}}
+				</p>
+				<p>
+					{{job_industry}}
+				</p>
+				<p>
+					{{job_location}}
+				</p>
+				<p>
+					Ref: {{job_reference}}
+				</p>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="well">
+				<p class="lead">
+					{{job_description}}
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			{{> salary}}
+		</div>
+		<div class="col-md-6">
+			{{> other}}
+		</div>
+	</div>
+</template>
+
+<template name="salary">
+	<div class="well">
+		Salary: {{salary}}
+	</div>
+</template>
+
+<template name="other">
+	<div class="well">
+		Start Date: {{job_startdate}}
+	</div>
+</template>
