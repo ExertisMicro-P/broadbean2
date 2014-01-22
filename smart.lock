@@ -7,7 +7,8 @@
       "spin": {},
       "xml2js": {},
       "bootstrap-3": {},
-      "reststop2": {}
+      "reststop2": {},
+      "iron-router-progress": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -39,6 +40,11 @@
         "git": "https://github.com/BeDifferential/reststop2.git",
         "tag": "v0.5.4",
         "commit": "12ff0306979d7b375cfa555fcaad9efafd3308ca"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
       },
       "blocking": {
         "git": "https://github.com/peerlibrary/meteor-blocking.git",

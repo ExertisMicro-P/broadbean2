@@ -15,26 +15,46 @@
 		</div>
 		<div class="col-md-4">
 			<div class="well">
-				<p>
-					{{job_type}}
-				</p>
-				<p>
-					{{job_industry}}
-				</p>
-				<p>
-					{{job_location}}
-				</p>
-				<p>
-					Ref: {{job_reference}}
-				</p>
+				<dl class="dl-horizontal">
+					<dt>
+						Type
+					</dt>
+					<dd>
+						{{job_type}}
+					</dd>
+				</dl>
+				<dl class="dl-horizontal">
+					<dt>
+						Department
+					</dt>
+					<dd>
+						{{job_industry}}
+					</dd>
+				</dl>
+				<dl class="dl-horizontal">
+					<dt>
+						Location
+					</dt>
+					<dd>
+						{{job_location}}
+					</dd>
+				</dl>
+				<dl class="dl-horizontal">
+					<dt>
+						Reference
+					</dt>
+					<dd>
+						{{job_reference}}
+					</dd>
+				</dl>
 			</div>
 		</div>
 		<div class="col-md-12">
-			<div class="well">
-				<p class="lead">
-					{{job_description}}
-				</p>
-			</div>
+
+			<blockquote>
+				{{job_description}}
+			</blockquote>
+
 		</div>
 	</div>
 

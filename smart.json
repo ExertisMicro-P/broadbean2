@@ -5,6 +5,7 @@
     "spin": {},
     "xml2js": {},
     "bootstrap-3": {},
-    "reststop2": {}
+    "reststop2": {},
+    "iron-router-progress": {}
   }
 }

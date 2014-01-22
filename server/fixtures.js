@@ -31,13 +31,18 @@ xmljob = "<job>\
 </job>";
 
 if (Jobs.find().count() === 0) {
+ 
+ 	var now = new Date().getTime();
     
   //xml2js.options = {explicitArray: false};
   var result = xml2js.parseStringSync(xmljob);
   console.dir(result);
-  Jobs.insert(result.job);
-  Jobs.insert(result.job);
-  Jobs.insert(result.job);
-  Jobs.insert(result.job);
+  org_job_title = result.job.job_title;
+  
+  for (var i = 0; i < 100; i++) {
+  	time = now - i * 3600 * 1000;
+  	result.job.job_title = org_job_title + ' ' + time;
+  	Jobs.insert(result.job);
+  }
   
 }

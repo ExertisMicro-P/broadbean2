@@ -1,7 +1,17 @@
 <template name="jobsList">
-  <div class="panel">
-    {{#each jobs}}
-      {{> jobItem}}
-    {{/each}}
-  </div>
+	<div class="well">
+		<form role="form">
+		<input type="text" id="searchfor" class="form-control" placeholder="Search by Job Title..."/>
+		</form>
+	</div>
+	<div class="panel">
+		{{#each jobs}}
+		{{> jobItem}}
+		{{/each}}
+	</div>
+	{{#if hasMoreJobs}}
+	<div class="well">
+      <a class="load-more" href="{{nextPath}}">Load more</a>
+      </div>
+    {{/if}}
 </template>

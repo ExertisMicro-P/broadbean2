@@ -42,6 +42,49 @@ RESTstop.add('job', {
 	// this will take XML ad=nd add it to the Jobs collection});
 	var result = xml2js.parseStringSync(this.params.xmljob);
 	console.dir(result);
-	var id = Jobs.insert(result.job);
-	return [200, {success: true, message: 'Job '+id+' was added'}];
+	switch(result.command) {
+		case 'add':
+			Jobs.insert(result.job, function(error, _id) {
+				if (!error) {
+					code = 200;
+					success = true;
+					msg = 'Job ' + _id + ' was removed';
+				} else {
+					code = 400;
+					success = false;
+					msg = error;
+				}
+
+				console.log(msg);
+
+				return [code, {
+					success : success,
+					message : msg
+				}];
+			});
+			break;
+
+		case 'delete':
+			Jobs.remove({
+				application_email : result.application_email
+			}, function(error, _id) {
+				if (!error) {
+					code = 200;
+					success = true;
+					msg = 'Job ' + _id + ' was removed';
+				} else {
+					code = 400;
+					success = false;
+					msg = error;
+				}
+
+				console.log(msg);
+
+				return [code, {
+					success : success,
+					message : msg
+				}];
+			});
+			break;
+	} // switch
 });
