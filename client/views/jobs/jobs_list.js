@@ -8,12 +8,20 @@ Template.jobsList.helpers({
  hasMoreJobs: function(){
     this.jobs.rewind();
     return Router.current().limit() == this.jobs.fetch().length;
+ },
+  
+  numJobs: function(){
+    return this.jobs.fetch().length > 0;
   }
+
 });
 
 Template.jobsList.events({
   'keyup #searchfor': function() {
-  	if ($('#searchfor').val().length>2)
-    Session.set('searchfor', $('#searchfor').val());
+  	if ($('#searchfor').val().length>0)
+    	Session.set('searchfor', $('#searchfor').val());
+    else
+    	Session.set('searchfor', ''); 
+    
   }
 });

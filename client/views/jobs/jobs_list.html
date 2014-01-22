@@ -5,9 +5,13 @@
 		</form>
 	</div>
 	<div class="panel">
+		{{#if numJobs}}
 		{{#each jobs}}
 		{{> jobItem}}
 		{{/each}}
+		{{else}}
+		Sorry, no matching jobs
+		{{/if}}
 	</div>
 	{{#if hasMoreJobs}}
 	<div class="well">
