@@ -10,8 +10,12 @@ Template.jobsList.helpers({
     return Router.current().limit() == this.jobs.fetch().length;
  },
   
-  numJobs: function(){
+  areJobs: function(){
     return this.jobs.fetch().length > 0;
+  },
+  
+  numJobs: function(){
+    return this.alljobs.fetch().length;
   }
 
 });

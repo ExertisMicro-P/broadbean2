@@ -4,8 +4,11 @@
 		<input type="search" id="searchfor" class="form-control" placeholder="Search by Job Title..."/>
 		</form>
 	</div>
+	<div class="well">
+		There are {{numJobs}} positions available 
+	</div>
 	<div class="panel">
-		{{#if numJobs}}
+		{{#if areJobs}}
 		{{#each jobs}}
 		{{> jobItem}}
 		{{/each}}
