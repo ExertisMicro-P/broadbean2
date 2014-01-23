@@ -1,0 +1,69 @@
+FORMAT: 1A
+HOST: http://broadbean.meteor.com
+
+# broadbean
+Exertis Micro-P Broadbean API is a *job opportunity posting* service which will publish jobs to one or more Exertis Careers Websites
+
+# Group Jobs
+
+
+## Jobs Collection [api/jobs]
+### List all Jobs [GET]
++ Response 200 (application/json)
+
+        {"job":{"command":["add"],
+        "username":["bobsmith"],
+        "password":["p455w0rd"],
+        "contact_name":["Bob Smith"],
+        "contact_email":["bob@smith.com"],
+        "contact_telephone":["020 7987 6900"],
+        "contact_url":["www.smith.com"],
+        "days_to_advertise":["7"],
+        "application_email":["bob.12345.123@smith.aplitrak.com"],
+        "application_url":["http://www.url.com/ad.asp?adid=12345123"],
+        "job_reference":["abc123"],
+        "job_title":"Test Engineer 1390429894480",
+        "job_type":["Contract"],
+        "job_duration":["6 Months"],
+        "job_startdate":["ASAP"],
+        "job_skills":["VB, C++, PERL, Java"],
+        "job_description":["This is the detailed description"],
+        "job_location":["London"],
+        "job_industry":["Marketing"],
+        "salary_currency":["gbp"],
+        "salary_from":["25000"],
+        "salary_to":["30000"],
+        "salary_per":["annum"],
+        "salary_benefits":["Bonus and Pension"],
+        "salary":["£25000 - £30000 per annum + Bonus and Pension"],
+        "_id":"8sAHXJnbfDhLynqqn"}
+        }
+
+### Create a Job [POST]
++ Request (application/json)
+
+        { "title": "Buy cheese and bread for breakfast." }
+
++ Response 201 (application/json)
+
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+
+## Job [/job/{id}]
+A single Job object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... MongoDB `_id` of the Note to perform action with. Has example value.
+
+### Retrieve a Note [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove a Job [DELETE]
++ Response 204
