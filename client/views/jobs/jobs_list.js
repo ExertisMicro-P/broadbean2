@@ -16,8 +16,11 @@ Template.jobsList.helpers({
   
   numJobs: function(){
     return this.alljobs.fetch().length;
-  }
+  },
 
+  numMatchingJobs: function(){
+    return Jobs.find({job_title: {$regex: Session.get('searchfor'), $options: 'i' }}).count();
+  }
 });
 
 Template.jobsList.events({

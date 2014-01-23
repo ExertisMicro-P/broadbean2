@@ -1,11 +1,16 @@
 <template name="jobsList">
-	<div class="well">
-		<form role="form">
-		<input type="search" id="searchfor" class="form-control" placeholder="Search by Job Title..."/>
-		</form>
-	</div>
-	<div class="well">
-		There are {{numJobs}} positions available 
+	<div class="row">
+		<div class="col-md-12 panel">
+		
+			<form role="form" class="col-md-8">
+				<input type="search" id="searchfor" class="form-control" placeholder="Search by Job Title..."/>
+			</form>
+		
+		<div class="col-md-4">
+			There are {{numJobs}} positions available.<br>
+			{{numMatchingJobs}} match your search.			
+		</div>
+		</div>
 	</div>
 	<div class="panel">
 		{{#if areJobs}}
