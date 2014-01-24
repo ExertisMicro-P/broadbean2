@@ -4,13 +4,17 @@ HOST: http://broadbean.meteor.com
 # broadbean
 Exertis Micro-P Broadbean API is a *job opportunity posting* service which will publish jobs to one or more Exertis Careers Websites
 
+# broadbean API Root [/api]
+API entry point.
+
+
 # Group Jobs
 
-
 ## Jobs Collection [api/jobs]
-### List all Jobs [GET]
-+ Response 200 (application/json)
+Collection of all Jobs
 
++ Model (application/json)
+    + Body
         {"job":{"command":["add"],
         "username":["bobsmith"],
         "password":["p455w0rd"],
@@ -39,6 +43,23 @@ Exertis Micro-P Broadbean API is a *job opportunity posting* service which will 
         "_id":"8sAHXJnbfDhLynqqn"}
         }
 
+
+### List all Jobs [GET]
++ Response 200 (application/json)
+    [Jobs Collection][]
+        
+
+
+
+
+
+## Job [api/job]
+A single Job object with all its details
+
+### Fetch Single Job [apu/job/{id}]
++ Parameters
+    + id (required, number, `1`) ... MongoDB `_id` of the Note to perform action with. Has example value.
+
 ### Create a Job [POST]
 + Request (application/json)
 
@@ -47,23 +68,7 @@ Exertis Micro-P Broadbean API is a *job opportunity posting* service which will 
 + Response 201 (application/json)
 
         { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Job [/job/{id}]
-A single Job object with all its details
-
-+ Parameters
-    + id (required, number, `1`) ... MongoDB `_id` of the Note to perform action with. Has example value.
-
-### Retrieve a Note [GET]
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
+        
 
 ### Remove a Job [DELETE]
 + Response 204
