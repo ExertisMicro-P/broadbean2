@@ -26,6 +26,9 @@ RESTstop.add('jobs', {
 	method : 'GET',
 	require_login : false
 }, function() {
+  
+  this.response.setHeader('access-control-allow-origin', '*');
+  
 	console.log('API:jobs');
 
 	var storedjobs = new Array;
