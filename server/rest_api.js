@@ -51,20 +51,26 @@ RESTstop.add('job', {
 	require_login : false
 }, function() {
 	// this will take XML and add it to the Jobs collection});
+  console.log('In: '+functionName());
 
 	if (!isJsonString(this.params.xmljob)) {
 		// not JSON passed in so assume it's XML
+    console.log('parsing XML');
+    console.log(this.params);
 
 		restFuture = new Future();
 		xml2js.parseStringSync(this.params.xmljob, handleData);
 		return restFuture.wait();
 	} else {
 		// looks like JSON was passed
+    console.log('Parsing JSON');
 		handleData(null,eval(this.params.xmljob)); // !! UNSAFE !!
-	}
+  }
+    console.log('Leaving: '+functionName());
 });
 
 function insertCallback(error, _id) {
+  
 	if (!error) {
 		code = 200;
 		success = true;
@@ -105,6 +111,7 @@ function removeCallback(error, _id) {
 }
 
 function handleData(err, data) {
+  console.log('In handleData');
 
 	result = data;
 	cmd = result.job.command[0];
@@ -134,11 +141,21 @@ function handleData(err, data) {
 
 }// handleData
 
-function IsJsonString(str) {
+function isJsonString(str) {
 	try {
 		JSON.parse(str);
 	} catch (e) {
 		return false;
 	}
 	return true;
+}
+
+
+function functionName() 
+{
+   var myName = arguments.callee.toString();
+   myName = myName.substr('function '.length);
+   myName = myName.substr(0, myName.indexOf('('));
+
+   return myName;
 }

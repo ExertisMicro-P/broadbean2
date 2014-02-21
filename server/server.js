@@ -7,7 +7,7 @@ Meteor.publish('jobs', function(options) {
 
 
 Meteor.publish('alljobs', function() {
-  return Jobs.find({}); 
+  return Jobs.find({}, {sort: {job_title: 1}}); 
 });
 
 Meteor.publish('singleJob', function(id) { 

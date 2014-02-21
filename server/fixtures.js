@@ -2,6 +2,18 @@
  * @author Exertis Micro-P
  */
 
+function randomJobTitle() {
+  var jobtitles = ['Sales Manager','PHP Web Devleoper','Account Manager','Warehouse Operative','Sales Administrator'];
+  var rand = jobtitles[Math.floor(Math.random() * jobtitles.length)];
+  return rand;
+}
+
+function randomLocation() {
+  var locations = ['Altham','Stoke','Basingstoke'];
+  var rand = locations[Math.floor(Math.random() * locations.length)];
+  return rand;
+}
+
 xmljob = "<job>\
     <command>add</command>\
     <username>bobsmith</username>\
@@ -37,11 +49,13 @@ if (Jobs.find().count() === 0) {
   //xml2js.options = {explicitArray: false};
   var result = xml2js.parseStringSync(xmljob);
   console.dir(result);
-  org_job_title = result.job.job_title;
+  //org_job_title = result.job.job_title;
   
   for (var i = 0; i < 10; i++) {
-  	time = now - i * 3600 * 1000;
-  	result.job.job_title = org_job_title + ' ' + time;
+  	//time = now - i * 3600 * 1000;
+  	//result.job.job_title = org_job_title + ' ' + time;
+    result.job.job_title = randomJobTitle();
+    result.job.job_location = randomLocation();
   	Jobs.insert(result.job);
   }
   
