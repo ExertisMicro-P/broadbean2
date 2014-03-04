@@ -51,7 +51,7 @@ if (Jobs.find().count() === 0) {
   console.dir(result);
   //org_job_title = result.job.job_title;
   
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 23; i++) {
   	//time = now - i * 3600 * 1000;
   	//result.job.job_title = org_job_title + ' ' + time;
     result.job.job_title = randomJobTitle();

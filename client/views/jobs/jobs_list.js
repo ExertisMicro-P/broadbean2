@@ -1,6 +1,9 @@
 /**
  * @author Exertis Micro-P
  */
+
+Session.set('searchfor','.+');
+
 Template.jobsList.helpers({
   /*jobs: function() {
     return Jobs.find({job_title: {$regex: Session.get('searchfor'), $options: 'i' }});
