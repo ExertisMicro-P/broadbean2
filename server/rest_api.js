@@ -22,6 +22,35 @@ RESTstop.add('job/:id', {
 	});
 });
 
+
+// id may be application_email or mongodb _id
+RESTstop.add('job/:id', {
+	method : 'DELETE',
+	require_login : false
+}, function() {
+  
+  console.log('DELETE');
+  if (!this.params.id) {
+    // don't know which to delete
+    msg = "Required Parameter 'id' missing";
+    console.log(msg);
+     return ([400, {
+        success : false,
+        message : msg
+      }]);
+    
+  } else {
+    // try to find the job to delete
+    console.log('Searching');
+    restFuture = new Future();
+    deleteJob(this.params.id);
+    return restFuture.wait();    
+  }
+});
+
+
+
+
 RESTstop.add('jobs', {
 	method : 'GET',
 	require_login : false
@@ -51,12 +80,20 @@ RESTstop.add('job', {
 	require_login : false
 }, function() {
 	// this will take XML and add it to the Jobs collection});
-  console.log('In: '+functionName());
+  console.log('In: RESTstop.add');
+  
+  
+  if (!this.params.xmljob) {
+    return ([400, {
+		success : false,
+		message : "Required Parameter 'xmljob' missing"
+	}]);
+  }
 
 	if (!isJsonString(this.params.xmljob)) {
 		// not JSON passed in so assume it's XML
     console.log('parsing XML');
-    console.log(this.params);
+    console.log('params=');console.log(this.params);
 
 		restFuture = new Future();
 		xml2js.parseStringSync(this.params.xmljob, handleData);
@@ -116,28 +153,44 @@ function handleData(err, data) {
 	result = data;
 	cmd = result.job.command[0];
 	console.dir(result);
-	//console.log('SWITCH=' + cmd);
-	switch(cmd) {
-		case 'add':
-			console.log('COMMAND=' + cmd);
-			addFuture = new Future();
-			Jobs.insert(result.job, insertCallback);
-			restFuture.
-			return (addFuture.wait());
-			break;
-
-		case 'delete':
-			console.log('COMMAND=' + cmd);
-			deleteFuture = new Future();
-			Jobs.remove({
-				application_email : result.application_email
-			}, removeCallback);
-			return deleteFuture.wait();
-			break;
-
-		default:
-			console.log('DEF:COMMAND=' + cmd + '.');
-	} // switch
+  
+  // verify credentials
+  if (result.job.username == 'broadbean2014' && result.job.password == 'Ragbax94') {
+  
+    //console.log('SWITCH=' + cmd);
+    switch(cmd) {
+      case 'add':
+        console.log('COMMAND=' + cmd);
+        addFuture = new Future();
+        Jobs.insert(result.job, insertCallback);
+        restFuture.
+        return (addFuture.wait());
+        break;
+  
+      case 'delete':
+        console.log('COMMAND=' + cmd);
+        deleteFuture = new Future();
+        deleteJob(id)
+        return deleteFuture.wait();
+        break;
+  
+      default:
+        console.log('DEF:COMMAND=' + cmd + '.');
+        console.log('Error: Unrecognised cmd!');
+        restFuture.return([400, {
+          success : false,
+          message : 'Unrecognised cmd'
+        }]);
+        
+    } // switch
+  } else {
+    // credentials were incorrect
+    console.log('Error: Not Authtorised!');
+    restFuture.return([403, {
+      success : false,
+      message : 'Not Authorised'
+    }]);
+  }
 
 }// handleData
 
@@ -159,3 +212,41 @@ function functionName()
 
    return myName;
 }
+
+
+
+function deleteJob(id) {
+   // search first for a job with matching application_email
+    jobtodelete = Jobs.findOne({
+      application_email : id
+    });
+    
+    if (!jobtodelete) {
+      // wasn't found. try searching again using id as _id
+      jobtodelete = Jobs.findOne({
+        _id : id
+      });
+    }
+      
+    
+    console.log('Searching complete');
+  
+    if (!jobtodelete) {
+      // couldn't find a match
+      msg="Job Not Found: "+id;
+      console.log(msg);
+       restFuture.return ([200, {
+          success : false,
+         message : msg
+        }]);
+    } else {
+      // delete the job
+      console.log('Deleting '+id+'('+jobtodelete._id+')');
+      deleteFuture = new Future();
+      Jobs.remove({
+          _id : jobtodelete._id
+        }, removeCallback);
+      restFuture.
+        return( deleteFuture.wait());      
+    }
+} // deleteJob
