@@ -12,20 +12,24 @@ RESTstop.configure({
 	use_auth : false
 });
 
+
+
+
 RESTstop.add('job/:id', {
-	method : 'GET',
+	method : 'GET api/job',
 	require_login : false
 }, function() {
-
+  console.log('GET');
 	return Jobs.findOne({
 		_id : this.params.id
 	});
 });
 
 
+
 // id may be application_email or mongodb _id
 RESTstop.add('job/:id', {
-	method : 'DELETE',
+	method : 'DELETE api/job',
 	require_login : false
 }, function() {
   
@@ -56,6 +60,7 @@ RESTstop.add('jobs', {
 	require_login : false
 }, function() {
   
+  console.log('GET api/jobs');
   this.response.setHeader('access-control-allow-origin', '*');
   
 	console.log('API:jobs');
@@ -75,36 +80,44 @@ RESTstop.add('jobs', {
 	};
 });
 
+
+
+
 RESTstop.add('job', {
 	method : 'POST',
 	require_login : false
 }, function() {
 	// this will take XML and add it to the Jobs collection});
-  console.log('In: RESTstop.add');
+  console.log('POST api/job');
   
+  console.log('params=');console.log(this.params);
   
-  if (!this.params.xmljob) {
-    return ([400, {
-		success : false,
-		message : "Required Parameter 'xmljob' missing"
-	}]);
-  }
+//  if (!this.params.xmljob) {
+//     console.log('Required Parameter \'xmljob\' missing');
+//      return ([400, {
+//        success : false,
+//        message : "Required Parameter 'xmljob' missing"
+//      }]);
+//  }
 
-	if (!isJsonString(this.params.xmljob)) {
+	if (!isJsonString(this.params)) {
 		// not JSON passed in so assume it's XML
-    console.log('parsing XML');
-    console.log('params=');console.log(this.params);
+    console.log('Parsing XML');
+    
 
 		restFuture = new Future();
-		xml2js.parseStringSync(this.params.xmljob, handleData);
+		xml2js.parseStringSync(Object.keys(this.params)[0], handleData);
 		return restFuture.wait();
 	} else {
 		// looks like JSON was passed
     console.log('Parsing JSON');
-		handleData(null,eval(this.params.xmljob)); // !! UNSAFE !!
+		handleData(null,eval(this.params)); // !! UNSAFE !!
   }
     console.log('Leaving: '+functionName());
 });
+
+
+
 
 function insertCallback(error, _id) {
   

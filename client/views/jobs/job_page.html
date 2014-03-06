@@ -8,6 +8,7 @@
 					</div>
 					<div class="col-md-2">
 						<a href="{{application_url}}" class="btn btn-primary">Apply Online</a>
+            <a data-toggle="modal" href="#myModal" >My Modal</a>
 					</div>
 				</div>
 				<h4> {{#each getSkills job_skills}} <span class="label label-primary">{{this}}</span> {{/each}} </h4>
@@ -66,6 +67,8 @@
 			{{> other}}
 		</div>
 	</div>
+  
+  {{>myModal}} 
 </template>
 
 <template name="salary">
@@ -79,4 +82,29 @@
 		Start Date: {{job_startdate}}
 		{{_id}}
 	</div>
+</template>
+
+
+
+  
+<template name="myModal">                                                                                 
+<!-- Modal --> 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">                                                                                
+<div class="modal-content">                                                                               
+<div class="modal-header">                                                                                
+  <a class="close" data-dismiss="modal">×</a>                                                             
+  <h3>Apply for '{{job_title}}'</h3>                                                                        
+</div>                                                                                                    
+<div class="modal-body" >                                                                                 
+  <h4>Text in a modal</h4>                                                                                
+  <p>You can add some text here.</p>                                                                      
+</div>                                                                                                    
+<div class="modal-footer">                                                                                
+  <a href="#" class="btn btn-success">Call to action</a>                                                  
+  <a href="#" class="btn" data-dismiss="modal">Close</a>                                                  
+</div>  
+</div>
+</div>
+</div>
 </template>
