@@ -45,6 +45,8 @@ Set header = Content-Type : application/x-www-form-urlencoded
     <salary_per>annum</salary_per>
     <salary_benefits>Bonus and Pension</salary_benefits>
     <salary>£25000 - £30000 per annum + Bonus and Pension</salary>
+    <exertis_company>Exertis Micro-P</exertis_company>
+    <featured>true</featured>
 </job>
 
 */

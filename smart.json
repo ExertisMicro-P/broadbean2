@@ -6,6 +6,9 @@
     "xml2js": {},
     "bootstrap-3": {},
     "reststop2": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "autoform": {},
+    "collection2": {},
+    "accounts-ui-bootstrap-3": {}
   }
 }

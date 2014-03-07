@@ -1,6 +1,6 @@
 <template name="layout">
 	<div class="container">
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar  navbar-inverse" role="navigation">
 			<div class="navbar-header">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -10,6 +10,8 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="{{pathFor 'jobsList'}}">Exertis Jobs</a>
+          
+
 				</div>
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -18,10 +20,19 @@
 							<a href="{{pathFor 'jobsList'}}">View Jobs</a>
 						</li>
 						<li>
-							<a href="#">Link</a>
-						</li>
+							<a href="{{pathFor 'createJob'}}">Create</a>
+						</li>        
+            
+          </ul>
+          
+          <ul class="nav navbar-nav">
+            <li>Login {{loginButtons}}</li>
+          </ul>
+        </div>
+      </div>
 		</nav>
 		<div id="main" class="row-fluid">
+    
 			{{yield}}
 		</div>
 	</div>

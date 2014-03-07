@@ -1,0 +1,53 @@
+<template name="createJob">
+  <h2>Create Job</h2>
+  {{#isolate}}
+  {{#autoForm schema=jobsCollection id="insertJobForm"}}
+  <div class="row">
+    <div class="col-md-6">
+      {{afQuickField 'command' value='add' readonly="readonly"}}
+      {{afQuickField 'username' value='broadbean2014' readonly="readonly"}}
+      {{afQuickField 'password' value='Ragbax94' readonly="readonly"}}
+      {{afQuickField 'contact_name' value='Susan Stratton'}}
+      {{afQuickField 'contact_email' value='hr@exertismicro-p.co.uk'}}
+      {{afQuickField 'contact_telephone' value='01256 776 776'}}
+      {{afQuickField 'contact_url' value='http://www.exertiscareers.co.uk'}}      
+    </div>
+
+    <div class="col-md-6">
+      {{afQuickField 'job_reference' autofocus=''}}      
+      {{afQuickField 'job_title'}}      
+      {{afQuickField "job_description" rows="5" placeholder="schemaLabel"}}
+      {{afQuickField 'job_type' options="allowed"}}
+      {{afQuickField 'job_duration'}}
+      {{afQuickField 'job_startdate'}}
+      {{afQuickField 'job_skills'}}      
+    </div>
+  </div>
+  
+  
+  <div class="row">
+    <div class="col-md-6">
+      {{afQuickField 'days_to_advertise' value='30'}}
+      {{afQuickField 'application_email' value='bob.12345.123@smith.aplitrak.com'}}
+      
+    </div>
+    <div class="col-md-6">
+      {{afQuickField 'exertis_company' options="allowed"}}
+      {{afQuickField "featured" radio="false" trueLabel="Yes" falseLabel="No"}}
+      
+    </div>
+  </div>
+      
+  {{> buttons}}
+{{/autoForm}}
+{{/isolate}}
+  
+</template>
+
+
+<template name="buttons">
+ 
+  <button type="submit" class="btn btn-primary insert">Insert</button>
+
+  <button type="reset" class="btn btn-default">Reset</button>
+</template>

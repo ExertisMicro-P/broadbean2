@@ -8,7 +8,10 @@
       "xml2js": {},
       "bootstrap-3": {},
       "reststop2": {},
-      "iron-router-progress": {}
+      "iron-router-progress": {},
+      "autoform": {},
+      "collection2": {},
+      "accounts-ui-bootstrap-3": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -46,10 +49,35 @@
         "tag": "v0.2.0",
         "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
       },
+      "autoform": {
+        "git": "https://github.com/aldeed/meteor-autoform.git",
+        "tag": "v0.4.20",
+        "commit": "d4d40a5356f9577a7d95d3526045035f3f1135af"
+      },
+      "collection2": {
+        "git": "https://github.com/aldeed/meteor-collection2.git",
+        "tag": "v0.3.8",
+        "commit": "69aff2a21ba3c382f915e1f9dbcca2ad38edb6d5"
+      },
+      "accounts-ui-bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
+        "tag": "v0.2.6",
+        "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
+      },
       "blocking": {
         "git": "https://github.com/peerlibrary/meteor-blocking.git",
         "tag": "v0.4.0",
         "commit": "e25a0be72e771b317b26d2bb5758c983bdcef23c"
+      },
+      "simple-schema": {
+        "git": "https://github.com/aldeed/meteor-simple-schema.git",
+        "tag": "v0.2.40",
+        "commit": "d22892daa943e3567916effeaafd794ca6af5cd2"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
       }
     }
   }
