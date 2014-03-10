@@ -16,20 +16,26 @@ RESTstop.configure({
 
 
 RESTstop.add('job/:id', {
-	method : 'GET api/job',
+	method : 'GET',
 	require_login : false
 }, function() {
   console.log('GET');
-	return Jobs.findOne({
+	job = Jobs.findOne({
 		_id : this.params.id
 	});
+  
+  if (job.job_description) {
+      job.job_description = marked(job.job_description);
+  }
+  
+  return job;
 });
 
 
 
 // id may be application_email or mongodb _id
 RESTstop.add('job/:id', {
-	method : 'DELETE api/job',
+	method : 'DELETE',
 	require_login : false
 }, function() {
   
@@ -70,6 +76,11 @@ RESTstop.add('jobs', {
 
 		// Modify the post here...
 		console.log('API jobs GET: ' + job.job_title + '(' + storedjobs.length + ')');
+    
+    // Convert Markdown job_description to HTML
+    if (job.job_description) {
+      job.job_description = marked(job.job_description.toString());      
+    }
 
 		storedjobs.push({
 			'job' : job

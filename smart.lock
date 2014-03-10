@@ -11,7 +11,10 @@
       "iron-router-progress": {},
       "autoform": {},
       "collection2": {},
-      "accounts-ui-bootstrap-3": {}
+      "accounts-ui-bootstrap-3": {},
+      "pagedown-bootstrap": {},
+      "sp-epic-editor": {},
+      "font-awesome": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -41,8 +44,8 @@
       },
       "reststop2": {
         "git": "https://github.com/BeDifferential/reststop2.git",
-        "tag": "v0.5.5",
-        "commit": "48cf04921f0d66e5834382bf5a769b8cc995b396"
+        "tag": "v0.5.6",
+        "commit": "14046bc686dab573957106cf96502e8a18c9204a"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
@@ -64,6 +67,21 @@
         "tag": "v0.2.6",
         "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
       },
+      "pagedown-bootstrap": {
+        "git": "https://github.com/Blahah/meteor-pagedown-bootstrap.git",
+        "tag": "v0.0.3",
+        "commit": "940abd8b0137da751f60b8acdd53b8c5577a2f82"
+      },
+      "sp-epic-editor": {
+        "git": "https://bitbucket.org/parhelium/sp-epic-editor",
+        "tag": "v0.0.3",
+        "commit": "1de330c49a955411d40647bdfdf6a3625c7447e6"
+      },
+      "font-awesome": {
+        "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
+        "tag": "v4.0.3",
+        "commit": "61e9361384347547ae144f8228faa4deffda23db"
+      },
       "blocking": {
         "git": "https://github.com/peerlibrary/meteor-blocking.git",
         "tag": "v0.4.0",
@@ -78,6 +96,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.5.1",
         "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "marked": {
+        "git": "https://github.com/chuangbo/meteor-marked.git",
+        "tag": "v0.3.1",
+        "commit": "3d9a9c94793b20e1ee7c807931cb536010d6f820"
       }
     }
   }

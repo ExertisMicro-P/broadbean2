@@ -9,6 +9,9 @@
     "iron-router-progress": {},
     "autoform": {},
     "collection2": {},
-    "accounts-ui-bootstrap-3": {}
+    "accounts-ui-bootstrap-3": {},
+    "pagedown-bootstrap": {},
+    "sp-epic-editor": {},
+    "font-awesome": {}
   }
 }
