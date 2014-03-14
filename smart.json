@@ -12,6 +12,8 @@
     "accounts-ui-bootstrap-3": {},
     "pagedown-bootstrap": {},
     "sp-epic-editor": {},
-    "font-awesome": {}
+    "font-awesome": {},
+    "bootstrap-alerts": {},
+    "houston": {}
   }
 }

@@ -14,7 +14,9 @@
       "accounts-ui-bootstrap-3": {},
       "pagedown-bootstrap": {},
       "sp-epic-editor": {},
-      "font-awesome": {}
+      "font-awesome": {},
+      "bootstrap-alerts": {},
+      "houston": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -82,6 +84,16 @@
         "tag": "v4.0.3",
         "commit": "61e9361384347547ae144f8228faa4deffda23db"
       },
+      "bootstrap-alerts": {
+        "git": "https://github.com/asktomsk/bootstrap-alerts.git",
+        "tag": "v0.0.5",
+        "commit": "6ddd650208a77677ab86af9dfccc3a69b1ba8d32"
+      },
+      "houston": {
+        "git": "https://github.com/gterrono/houston.git",
+        "tag": "v1.0.1",
+        "commit": "59653d3a345a438c83bfd5244b992a19c4b014d7"
+      },
       "blocking": {
         "git": "https://github.com/peerlibrary/meteor-blocking.git",
         "tag": "v0.4.0",
@@ -101,6 +113,11 @@
         "git": "https://github.com/chuangbo/meteor-marked.git",
         "tag": "v0.3.1",
         "commit": "3d9a9c94793b20e1ee7c807931cb536010d6f820"
+      },
+      "paginated-subscription": {
+        "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
+        "tag": "v0.1.2",
+        "commit": "35e0c6112df2b4cfeb60b559276a93cac5ee2dd6"
       }
     }
   }

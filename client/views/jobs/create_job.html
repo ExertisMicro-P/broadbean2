@@ -15,14 +15,14 @@
 
     <div class="col-md-6">
       {{afQuickField 'job_reference' autofocus=''}}      
-      {{afQuickField 'job_title'}}      
+      {{afQuickField 'job_title' autocomplete="on"}}      
      
       {{afQuickField 'job_type' options="allowed"}}
       {{afQuickField 'job_duration'}}
       {{afQuickField 'job_startdate'}}
       {{afQuickField 'job_skills'}}      
       {{afQuickField 'job_location' options="allowed"}}   
-      {{afQuickField 'job_industry'}}   
+      {{afQuickField 'job_industry' autocomplete="on"}}   
     </div>
   </div>
   <div class="row">
@@ -33,19 +33,19 @@
   
   <div class="row">
     <div class="col-md-6">
-      {{afQuickField 'days_to_advertise' value='30'}}
-      {{afQuickField 'application_email' value='bob.12345.123@smith.aplitrak.com'}}
       
       {{afQuickField 'salary_currency' value='gbp'}}
        {{afQuickField 'salary_from'}}
        {{afQuickField 'salary_to'}}
        {{afQuickField 'salary_per' options="allowed"}}
-       {{afQuickField 'salary_benefits'}}
+       {{afQuickField 'salary_benefits' autocomplete="on"}}
       {{afQuickField 'salary' }}
       
       
     </div>
     <div class="col-md-6">
+      {{afQuickField 'days_to_advertise' value='30'}}
+      {{afQuickField 'application_email' value='bob.12345.123@smith.aplitrak.com'}}
       {{afQuickField 'exertis_company' options="allowed"}}
       {{afQuickField "featured" radio="false" trueLabel="Yes" falseLabel="No"}}
       

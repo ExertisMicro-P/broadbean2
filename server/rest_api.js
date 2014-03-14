@@ -24,11 +24,19 @@ RESTstop.add('job/:id', {
 		_id : this.params.id
 	});
   
-  if (job.job_description) {
-      job.job_description = marked(job.job_description);
-  }
-  
-  return job;
+  if (typeof job !== 'undefined') {
+    console.log('job=');console.log(job);
+    if (typeof job.job_description[0] !== 'undefined') {
+        job.job_description = marked(job.job_description[0]);
+    }
+    
+    return job;
+  } else {
+    return [400, {
+              success : false,
+              message : 'Job '+this.params.id+' unknown'
+            }]
+  };
 });
 
 

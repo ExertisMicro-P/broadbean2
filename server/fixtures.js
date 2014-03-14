@@ -95,7 +95,7 @@ if (Jobs.find().count() === 0) {
   	//result.job.job_title = org_job_title + ' ' + time;
     result.job.job_title = randomJobTitle();
     result.job.job_location = randomLocation();
-  	Jobs.insert(result.job);
+  	//Jobs.insert(result.job); // DON'T DO THIS WHEN LIVE
   }
   
 }

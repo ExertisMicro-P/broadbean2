@@ -89,7 +89,7 @@ Jobs = new Meteor.Collection('jobs',
             type: String,
             label: "Job Description",
             optional: false,
-            max: 1000
+            max: 5000
         },
         job_location: {
             type: String,
