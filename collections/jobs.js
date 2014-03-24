@@ -82,8 +82,7 @@ Jobs = new Meteor.Collection('jobs',
         job_skills: {
             type: String,
             label: "Skills",
-            optional: true,
-            max: 100
+            optional: true
         },
         job_description: {
             type: String,

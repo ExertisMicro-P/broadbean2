@@ -3,17 +3,20 @@
  */
 Template.jobPage.helpers({
   getSkills: function(input) {
-    var skillsArray = [];
-    skillsArray = input[0].split(',');
-    console.log(skillsArray);
-    return skillsArray;
-  },
+    if (typeof input != 'undefined') {
+      var skillsArray = [];
+      skillsArray = input.split(',');
+      console.log(skillsArray);
+      return skillsArray;
+    } else
+      return '';
+  }, // getSkills
   
   job_description_html: function() {
     console.log(this.job_description);
-   if (typeof this.job_description[0] !== 'undefined')
-      return marked(this.job_description[0]);
+   if (typeof this.job_description !== 'undefined')
+      return marked(this.job_description);
     else
       return  '';
-  }
+  } // job_description_html
 })

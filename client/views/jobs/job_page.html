@@ -7,9 +7,12 @@
 						<h1>{{job_title}}</h1>
 					</div>
 					<div class="col-md-2">
-						<a href="{{application_url}}" class="btn btn-primary">Apply Online</a>
-            <a data-toggle="modal" href="#myModal" >My Modal</a>
-					</div>
+            <a href="{{application_url}}" class="btn btn-primary"><span class="glyphicon glyphicon-hand-right"></span>&nbsp;Apply Online</a>
+            <div>&nbsp;</div>
+            <a href="{{pathFor 'updateJob'}}" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit </a>
+            <div>&nbsp;</div>
+             <a data-toggle="modal" href="#myModal" class="btn btn-primary"> <span class="glyphicon glyphicon-fullscreen"></span>&nbsp;My Model Test </a>
+       		</div>
 				</div>
 				<h4> {{#each getSkills job_skills}} <span class="label label-primary">{{this}}</span> {{/each}} </h4>
 			</div>

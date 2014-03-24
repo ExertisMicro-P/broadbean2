@@ -16,7 +16,9 @@
       "sp-epic-editor": {},
       "font-awesome": {},
       "bootstrap-alerts": {},
-      "houston": {}
+      "houston": {},
+      "accounts-admin-ui-bootstrap-3": {},
+      "ogno-admin": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -36,8 +38,8 @@
       },
       "xml2js": {
         "git": "https://github.com/peerlibrary/meteor-xml2js.git",
-        "tag": "v0.2.8.4",
-        "commit": "98ba391239dd79901a7718593b48c1a7e6b0f7b2"
+        "tag": "v0.4.1-1",
+        "commit": "18aeb92fbbcdf916c66fb87a8617c4b86f376f91"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
@@ -46,8 +48,8 @@
       },
       "reststop2": {
         "git": "https://github.com/BeDifferential/reststop2.git",
-        "tag": "v0.5.6",
-        "commit": "14046bc686dab573957106cf96502e8a18c9204a"
+        "tag": "v0.5.7",
+        "commit": "59647a82aacfa0b1e3ad71353aa1fe15dcebf747"
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
@@ -61,8 +63,8 @@
       },
       "collection2": {
         "git": "https://github.com/aldeed/meteor-collection2.git",
-        "tag": "v0.3.8",
-        "commit": "69aff2a21ba3c382f915e1f9dbcca2ad38edb6d5"
+        "tag": "v0.3.9",
+        "commit": "fdda9b5c87e9dcb5cb67087ecb6c9f21352d0cc2"
       },
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
@@ -94,6 +96,16 @@
         "tag": "v1.0.1",
         "commit": "59653d3a345a438c83bfd5244b992a19c4b014d7"
       },
+      "accounts-admin-ui-bootstrap-3": {
+        "git": "https://github.com/hharnisc/meteor-accounts-admin-ui-bootstrap-3.git",
+        "tag": "v0.2.3",
+        "commit": "c396f28bdcfa6f20c67948fe17841746337f9016"
+      },
+      "ogno-admin": {
+        "git": "https://github.com/matteodem/meteor-ogno-admin.git",
+        "tag": "v0.2.6",
+        "commit": "5c712355f6460c52a7ac428d7e01d5d3f6602b4d"
+      },
       "blocking": {
         "git": "https://github.com/peerlibrary/meteor-blocking.git",
         "tag": "v0.4.0",
@@ -101,8 +113,8 @@
       },
       "simple-schema": {
         "git": "https://github.com/aldeed/meteor-simple-schema.git",
-        "tag": "v0.2.40",
-        "commit": "d22892daa943e3567916effeaafd794ca6af5cd2"
+        "tag": "v0.2.42",
+        "commit": "85ce399ec94ecc6b9b2fdb114bddaceba82f3a03"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -118,6 +130,21 @@
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
         "tag": "v0.1.2",
         "commit": "35e0c6112df2b4cfeb60b559276a93cac5ee2dd6"
+      },
+      "roles": {
+        "git": "https://github.com/alanning/meteor-roles.git",
+        "tag": "v1.2.6",
+        "commit": "f2a9058281f8f2fe028767841d7445aadd6893cf"
+      },
+      "pagination-mini": {
+        "git": "https://github.com/huyinghuan/meteor-pagination-mini.git",
+        "tag": "v0.0.2",
+        "commit": "f07ab5ff58ae9d71ae4407cb3198d078a96750b0"
+      },
+      "semantic-ui": {
+        "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
+        "tag": "v0.15.1",
+        "commit": "ee29706b4ccc99f2d44d5be1347a09a2f77d03cb"
       }
     }
   }

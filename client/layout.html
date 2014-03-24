@@ -36,6 +36,21 @@
       {{> bootstrapAlerts}}
     
 			{{yield}}
+      
+      {{> adminTemplate}}
 		</div>
 	</div>
+</template>
+
+
+
+  
+
+
+<template name="adminTemplate">
+    {{#if isAdminUser}}
+        {{> accountsAdmin}}
+    {{else}}
+        Must be admin to see this...
+    {{/if}}
 </template>

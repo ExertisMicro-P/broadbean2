@@ -1,7 +1,7 @@
-<template name="createJob">
-  <h2>Create Job</h2>
+<template name="updateJob">
+  <h2>Update Job</h2>
   {{#isolate}}
-  {{#autoForm schema=jobsCollection id="insertJobForm"}}
+  {{#autoForm schema=jobsCollection id="updateJobForm" type='update' doc=this}}
   <div class="row">
     <div class="col-md-6">
       {{afQuickField 'command' value='add' readonly="readonly"}}
@@ -25,62 +25,61 @@
       {{afQuickField 'job_industry' autocomplete="on"}}   
     </div>
   </div>
-  <div class="row">
-    
-    {{> editor}}
+  
+  
+  <div class="row">  
+    {{> editor2}}
   </div>
   
   
   <div class="row">
     <div class="col-md-6">
-      
       {{afQuickField 'salary_currency' value='gbp'}}
        {{afQuickField 'salary_from'}}
        {{afQuickField 'salary_to'}}
        {{afQuickField 'salary_per' options="allowed"}}
        {{afQuickField 'salary_benefits' autocomplete="on"}}
-      {{afQuickField 'salary' }}
-      
-      
+      {{afQuickField 'salary' }}            
     </div>
+    
     <div class="col-md-6">
       {{afQuickField 'days_to_advertise' value='30'}}
       {{afQuickField 'application_email' value='bob.12345.123@smith.aplitrak.com'}}
       {{afQuickField 'exertis_company' options="allowed"}}
-      {{afQuickField "featured" radio="false" trueLabel="Yes" falseLabel="No"}}
-      
+      {{afQuickField "featured" radio="false" trueLabel="Yes" falseLabel="No"}}      
     </div>
   </div>
       
-  {{> buttonsInsert}}
+  {{> buttonsUpdate}}
 {{/autoForm}}
 {{/isolate}}
   
 </template>
 
 
-<template name="buttonsInsert">
+<template name="buttonsUpdate">
  
-  <button type="submit" class="btn btn-primary insert">Insert</button>
+  <button type="submit" class="btn btn-primary update">Update</button>
 
   <button type="reset" class="btn btn-default">Reset</button>
 </template>
 
 
-<template name="editor">
+<template name="editor2">
     <div id="description">
-        <button type="button" class="btn btn-primary btn-xs" id="edit-btn" style="float: right; display: none;" title="Edit mode"><i class="fa fa-edit" id="edit-btn-icon"></i></button>
-        <button type="button" class="btn btn-primary btn-xs" id="preview-btn" style="float: right;" title="Preview mode"><i class="fa fa-eye" id="preview-btn-icon"></i></button>
+        <button type="button" class="btn btn-primary btn-xs" id="edit-btn2" style="float: right; display: none;" title="Edit mode"><i class="fa fa-edit" id="edit-btn-icon"></i></button>
+        <button type="button" class="btn btn-primary btn-xs" id="preview-btn2" style="float: right;" title="Preview mode"><i class="fa fa-eye" id="preview-btn-icon"></i></button>
         {{#constant}}
         <div class='wmd-panel'>
-            <div class="wmd-button-bar" id="wmd-button-bar"></div>
-            <div class="wmd-preview" id="wmd-preview" tabindex="4" style="display: none;">
+            <div class="wmd-button-bar" id="wmd-button-bar2"></div>
+            <div class="wmd-preview" id="wmd-preview2" tabindex="4" style="display: none;">
             </div>
             <!-- <textarea class='wmd-input' id="wmd-input"></textarea> -->
-           {{afQuickField "job_description" rows="15" placeholder="schemaLabel" class='wmd-input' id="wmd-input"}}
+           {{afQuickField "job_description" rows="15" placeholder="schemaLabel" class='wmd-input' id='wmd-input2'}}
         </div>
         {{/constant}}
     </div>
 </template>
+
 
 
