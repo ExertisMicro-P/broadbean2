@@ -125,7 +125,13 @@ RESTstop.add('job', {
     
 
 		restFuture = new Future();
-		xml2js.parseStringSync(Object.keys(this.params)[0], handleData);
+    //var someText = this.params.toString();//.replace(/(\r\n|\n|\r)/gm," ");
+    //var j = JSON.parse(this.params.toString());
+    var x = Object.keys(this.params)[0];
+   console.log('x=');console.log(x);
+		//xml2js.parseStringSync(x, handleData);
+    
+    xml2js.parseStringSync(x, {explicitArray:false}, handleData);
 		return restFuture.wait();
 	} else {
 		// looks like JSON was passed
@@ -183,7 +189,9 @@ function handleData(err, data) {
   console.log('In handleData');
 
 	result = data;
-	cmd = result.job.command[0];
+  console.log('result=');console.log(result);
+  console.log('err=');console.log(err);
+	cmd = result.job.command;
 	console.dir(result);
   
   // verify credentials
