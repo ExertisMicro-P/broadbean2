@@ -3,14 +3,17 @@
   {{#isolate}}
   {{#autoForm schema=jobsCollection id="insertJobForm"}}
   <div class="row">
-    <div class="col-md-6">
-      {{afQuickField 'command' value='add' readonly="readonly"}}
-      {{afQuickField 'username' value='broadbean2014' readonly="readonly"}}
-      {{afQuickField 'password' value='Ragbax94' readonly="readonly"}}
-      {{afQuickField 'contact_name' value='Susan Stratton'}}
-      {{afQuickField 'contact_email' value='hr@exertismicro-p.co.uk'}}
-      {{afQuickField 'contact_telephone' value='01256 776 776'}}
-      {{afQuickField 'contact_url' value='http://www.exertiscareers.co.uk'}}      
+    <div class="col-md-6 collapse-group">
+      <div class="collapse" id="viewdetails">
+        {{afQuickField 'command' value='add' readonly="readonly"}}
+        {{afQuickField 'username' value='broadbean2014' readonly="readonly"}}
+        {{afQuickField 'password' value='Ragbax94' readonly="readonly"}}
+        {{afQuickField 'contact_name' value='Susan Stratton'}}
+        {{afQuickField 'contact_email' value='hr@exertismicro-p.co.uk'}}
+        {{afQuickField 'contact_telephone' value='01256 776 776'}}
+        {{afQuickField 'contact_url' value='http://www.exertiscareers.co.uk'}}      
+      </div>
+      <a class="btn" data-toggle="collapse" data-target="#viewdetails">View/Hide basic details &raquo;</a>
     </div>
 
     <div class="col-md-6">
@@ -20,7 +23,7 @@
       {{afQuickField 'job_type' options="allowed"}}
       {{afQuickField 'job_duration'}}
       {{afQuickField 'job_startdate'}}
-      {{afQuickField 'job_skills'}}      
+      {{afQuickField 'job_skills' placeholder="e.g. PHP, Excel, Oracle (short acronyms only!)"}}      
       {{afQuickField 'job_location' options="allowed"}}   
       {{afQuickField 'job_industry' autocomplete="on"}}   
     </div>
@@ -78,6 +81,12 @@
             </div>
             <!-- <textarea class='wmd-input' id="wmd-input"></textarea> -->
            {{afQuickField "job_description" rows="15" placeholder="schemaLabel" class='wmd-input' id="wmd-input"}}
+           <div class="alert alert-info">
+             Tips:<br>
+             <ul>
+               <li>Use 'Markdown' to format your Job Description - see <a href="http://www.codecademy.com/courses/web-intermediate-en-Bw3bg/0/1">this online Markdown course</a> or <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">this cheatsheet</a></li>
+               <li>Do NOT paste from MS Word!</li>
+             </ul>
         </div>
         {{/constant}}
     </div>

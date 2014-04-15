@@ -104,7 +104,7 @@ Jobs = new Meteor.Collection('jobs',
         salary_currency: {
             type: String,
             label: "Salary Current",
-            allowedValues: ['gbp', 'usd', 'eur']
+            allowedValues: ['gbp', 'usd', 'eur','GBP','USD','EUR']
         },
         salary_from: {
             type: String,
@@ -141,10 +141,9 @@ Jobs = new Meteor.Collection('jobs',
             allowedValues: ['Exertis Micro-P', 'Exertis Advent', 'Exertis GoConnect', 'Exertis Security', 'Exertis Gem', 'Exertis MSE']
         },
         featured: {
-            type: Boolean,
+            type: String,
             label: "Is featured",
             optional: true,
-            max: 1000
         },
       
     }

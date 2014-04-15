@@ -111,6 +111,9 @@ RESTstop.add('job', {
   
   console.log('params=');console.log(this.params);
   
+  
+  
+
 //  if (!this.params.xmljob) {
 //     console.log('Required Parameter \'xmljob\' missing');
 //      return ([400, {
@@ -128,10 +131,17 @@ RESTstop.add('job', {
     //var someText = this.params.toString();//.replace(/(\r\n|\n|\r)/gm," ");
     //var j = JSON.parse(this.params.toString());
     var x = Object.keys(this.params)[0];
-   console.log('x=');console.log(x);
+    
+    xx = x + this.params[x];
+   console.log('xx=');console.log(xx);
 		//xml2js.parseStringSync(x, handleData);
     
-    xml2js.parseStringSync(x, {explicitArray:false}, handleData);
+    // strip off <?xml version="1.0" encoding="utf-8"?>
+    xx = xx.replace('<?xml version="1.0" encoding="utf-8"?>','');
+    xx = xx.trim();      
+    console.log('2)xx=');console.log(xx);
+    
+    xml2js.parseStringSync(xx, {explicitArray:false}, handleData);
 		return restFuture.wait();
 	} else {
 		// looks like JSON was passed
