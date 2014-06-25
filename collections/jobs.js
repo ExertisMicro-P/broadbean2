@@ -65,7 +65,7 @@ Jobs = new Meteor.Collection('jobs',
         job_type: {
             type: String,
             label: "Job Type",
-            allowedValues: ['Contract','Permanent','Temp']
+            allowedValues: ['Contract','Permanent','Temp','Temporary']
         },
         job_duration: {
             type: String,
@@ -157,11 +157,11 @@ Jobs.allow({
   insert: function() {
     return true;
   },
-  update: function() {
-    return true;
+  update: function(userId) {
+    return (userId);
   },
-  remove: function() {
-    return true;
+  remove: function(userId) {
+    return (userId);
   },
   fetch: []
 });

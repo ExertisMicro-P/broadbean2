@@ -175,11 +175,11 @@ function insertCallback(error, _id) {
 	}]);
 }// insertCallback
 
-function removeCallback(error, _id) {
+function removeCallback(error, count) {
 	if (!error) {
 		code = 200;
 		success = true;
-		msg = 'Job ' + _id + ' was removed';
+		msg = count + ' Job was removed';
 	} else {
 		code = 400;
 		success = false;
@@ -219,9 +219,37 @@ function handleData(err, data) {
   
       case 'delete':
         console.log('COMMAND=' + cmd);
-        deleteFuture = new Future();
-        deleteJob(id)
-        return deleteFuture.wait();
+        console.log('id='+result.job.id);
+        
+        // search first for a job with matching application_email
+        jobtodelete = Jobs.findOne({
+          _id : result.job.id
+        });
+        
+        /*
+        if (!jobtodelete) {
+          // wasn't found. try searching again using id as _id
+          jobtodelete = Jobs.findOne({
+            _id : result.job.id
+          });
+        }
+        */
+      
+        if (jobtodelete) {
+          console.log('Searching complete. Found'+jobtodelete._id);          
+          deleteFuture = new Future();          
+          deleteJob(jobtodelete);
+          return deleteFuture.wait();
+        } else {
+           console.log('Searching complete. NOT FOUND '+result.job.id);
+           // couldn't find a match
+            msg="Job Not Found: "+result.job.id;
+            console.log(msg);
+             restFuture.return ([200, {
+                 success : false,
+                 message : msg
+              }]);
+        }
         break;
   
       default:
@@ -265,38 +293,15 @@ function functionName()
 
 
 
-function deleteJob(id) {
-   // search first for a job with matching application_email
-    jobtodelete = Jobs.findOne({
-      application_email : id
-    });
-    
-    if (!jobtodelete) {
-      // wasn't found. try searching again using id as _id
-      jobtodelete = Jobs.findOne({
-        _id : id
-      });
-    }
-      
-    
-    console.log('Searching complete');
-  
-    if (!jobtodelete) {
-      // couldn't find a match
-      msg="Job Not Found: "+id;
-      console.log(msg);
-       restFuture.return ([200, {
-          success : false,
-         message : msg
-        }]);
-    } else {
-      // delete the job
-      console.log('Deleting '+id+'('+jobtodelete._id+')');
-      deleteFuture = new Future();
-      Jobs.remove({
-          _id : jobtodelete._id
-        }, removeCallback);
-      restFuture.
-        return( deleteFuture.wait());      
-    }
+function deleteJob(jobtodelete) {
+   
+  // delete the job
+  console.log('Deleting ('+jobtodelete._id+')');
+  deleteFuture = new Future();
+  Jobs.remove({
+    _id : jobtodelete._id
+  }, removeCallback);
+  restFuture.
+  return( deleteFuture.wait());      
+   
 } // deleteJob

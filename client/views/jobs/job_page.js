@@ -35,14 +35,15 @@ Template.jobPage.events({
   'click .delete': function(e) {
              e.preventDefault();
              if (confirm("Delete this Job?")) {
-               var currentJobId = this._id;
+               currentJobId = this._id;
+               job_title = this.job_title;
                Jobs.remove(currentJobId, function(error) {
                 if (!error) {
-                   Alerts.add('Job '+this.job_title+' / '.currentJobId+' DELETED!', 'warning', {
+                   Alerts.add('Job '+job_title+' / '+currentJobId+' DELETED!', 'warning', {
                                   fadeIn: 1000, fadeOut: 1000, autoHide: 10000
                    });
                  } else {
-                   Alerts.add('FAILED!!: Job '+this.job_title+' / '.currentJobId+' NOT deleted!', 'danger', {
+                   Alerts.add('FAILED!!: Job '+job_title+' / '+currentJobId+' NOT deleted!', 'danger', {
                                   fadeIn: 1000, fadeOut: 1000, autoHide: 10000
                    });
                  }

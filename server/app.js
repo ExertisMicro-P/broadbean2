@@ -13,6 +13,10 @@
        if (Meteor.users.findOne("xpEPtEbrYETRJ6GGQ"))
             Roles.addUsersToRoles("xpEPtEbrYETRJ6GGQ", ['admin']);
       
+
+      // for admin on broadbean-dev.meteor.com
+      if (Meteor.users.findOne("2ArEwrRZmXNFNh4Xd"))
+            Roles.addUsersToRoles("2ArEwrRZmXNFNh4Xd", ['admin']);
       
 
         // create a couple of roles if they don't already exist (THESE ARE NOT NEEDED -- just for the demo)

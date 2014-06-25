@@ -3,19 +3,27 @@
 
 Template.updateJob.jobsCollection = function () {
     return Jobs;
-};
+}; // Template.updateJob.jobsCollection
 
-/*
-Template.updateJob.updateJobAF = function () {
-    return updateJobAF;
-};
 
-updateJobAF.hooks({
-  onSuccess: function(operation, result, template) {
-    Router.go('jobsList')
-  }, 
-});
-*/
+
+
+Template.updateJob.updateJobForm = function () {
+  console.log('Template.updateJob.updateJobFor');
+
+
+ updateJobForm = new AutoForm(jobsCollection);
+
+         updateJobForm.hooks({
+             onSuccess: function(operation, result, template) {
+        console.log(operation+' Successful');
+        Router.go('jobsList');
+      }
+        });
+
+    return updateJobForm;
+};
+    
 
 
 /**
