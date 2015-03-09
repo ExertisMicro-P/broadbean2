@@ -6,9 +6,11 @@
 				<h4>{{job_location}}</h4>
 			</div>
 			<div class="col-md-4">
-				<p>
-					{{job_reference}}
-				</p>
+				<p>{{job_reference}}</p>
+				<p>{{_id}}</p>
+        <p><strong>Created:</strong> {{createdAt}}</p>
+        <p><strong>For:</strong> {{days_to_advertise}} days</p>
+        
 				<a href="{{pathFor 'jobPage'}}" class="discuss btn btn-primary"> <span class="glyphicon glyphicon-search"></span>&nbsp;View Details </a>
 				<a href="{{pathFor 'updateJob'}}" class="discuss btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit </a>
 			</div>

@@ -1,4 +1,6 @@
 /**
+ * Exposes an API to Broadeban 
+ * as described in http://api.adcourier.com/docs/index.cgi?page=jobboards_overview 
  * @author Exertis Micro-P
  */
 console.log('Configuring REST API - rest_api.js');
@@ -80,19 +82,43 @@ RESTstop.add('jobs', {
 	console.log('API:jobs');
 
 	var storedjobs = new Array;
+  now = new Date();
+  
 	Jobs.find({}).forEach(function(job) {
-
-		// Modify the post here...
-		console.log('API jobs GET: ' + job.job_title + '(' + storedjobs.length + ')');
-    
-    // Convert Markdown job_description to HTML
-    if (job.job_description) {
-      job.job_description = marked(job.job_description.toString());      
+    // Filter out any expired jobs
+    skip = false;
+    if (job.createdAt) {
+      expiresAt = new Date(job.createdAt);
+      expiresAt.setDate(expiresAt.getDate() + job.days_to_advertise); 
+      if (now > expiresAt) {
+        skip = true;
+      }
+    } else {
+     /* 
+     // frig to setup initial createdAt on some existing records
+     Jobs.update(job._id,
+                  {
+                    $set: {days_to_advertise: 30}
+                  }
+                 );
+                 */
     }
+    
+    if (skip) {
+      console.log('API jobs GET: SKIPPED (Expired): ' + job.job_title + '(' + storedjobs.length + ')');
+    } else {
+      // Modify the post here...
+      console.log('API jobs GET: ' + job.job_title + '(' + storedjobs.length + ')');
 
-		storedjobs.push({
-			'job' : job
-		});
+      // Convert Markdown job_description to HTML
+      if (job.job_description) {
+        job.job_description = marked(job.job_description.toString());      
+      }
+
+      storedjobs.push({
+        'job' : job
+      });
+  } // if skip
 	});
 	return {
 		'jobs' : storedjobs

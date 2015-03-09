@@ -93,7 +93,7 @@ Jobs = new Meteor.Collection('jobs',
         job_location: {
             type: String,
             label: "Job Location",
-            allowedValues: ['Altham', 'Stoke', 'Basingstoke', 'Elland', 'Dordrecht','Diege','Dublin']
+            allowedValues: ['Altham', 'Stoke', 'Basingstoke', 'Elland', 'Dordrecht','Diege','Dublin', 'Harlow', 'Raunds', 'Stockholm', 'Bromma']
         },
         job_industry: {
             type: String,
@@ -104,7 +104,7 @@ Jobs = new Meteor.Collection('jobs',
         salary_currency: {
             type: String,
             label: "Salary Current",
-            allowedValues: ['gbp', 'usd', 'eur','GBP','USD','EUR']
+            allowedValues: ['gbp', 'usd', 'eur','GBP','USD','EUR', 'sek', 'SEK']
         },
         salary_from: {
             type: String,
@@ -138,13 +138,40 @@ Jobs = new Meteor.Collection('jobs',
         exertis_company: {
             type: String,
             label: "Exertis Company",
-            allowedValues: ['Exertis Micro-P', 'Exertis Advent', 'Exertis GoConnect', 'Exertis Security', 'Exertis Gem', 'Exertis MSE']
+            allowedValues: ['Exertis Micro-P', 'Exertis Advent', 'Exertis GoConnect', 'Exertis Security', 'Exertis Gem', 'Exertis MSE', 'Exertis', 'Exertis UK', 'Exertis Ztorm']
         },
         featured: {
             type: String,
             label: "Is featured",
             optional: true,
         },
+      // Force value to be current date (on server) upon insert
+  // and prevent updates thereafter.
+  createdAt: {
+    type: Date,
+      autoValue: function() {
+        //return new Date();
+        if (this.isInsert) {
+          return new Date;
+        } else if (this.isUpsert) {
+          return {$setOnInsert: new Date};
+        } else {
+          this.unset();
+        }
+      }
+  },
+  // Force value to be current date (on server) upon update
+  // and don't allow it to be set upon insert.
+  updatedAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isUpdate) {
+        return new Date();
+      }
+    },
+    denyInsert: true,
+    optional: true
+  },
       
     }
 }
