@@ -247,6 +247,13 @@ function handleData(err, data) {
         console.log('COMMAND=' + cmd);
         console.log('id='+result.job.id);
         
+         Email.send({
+          to: 'russell.hutson@exertis.co.uk',
+          from: 'russell.hutson@exertis.co.uk',
+          subject: "Meteor Broadbean - Delete attempted",
+          text: JSON.stringify(result)
+        });
+        
         // search first for a job with matching application_email
         jobtodelete = Jobs.findOne({
           _id : result.job.id
