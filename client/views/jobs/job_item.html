@@ -10,6 +10,7 @@
 				<p>{{_id}}</p>
         <p><strong>Created:</strong> {{createdAt}}</p>
         <p><strong>For:</strong> {{days_to_advertise}} days</p>
+        <p class="{{expired}}"><strong>Expires at:</strong>{{expiresAt}}</p>
         
 				<a href="{{pathFor 'jobPage'}}" class="discuss btn btn-primary"> <span class="glyphicon glyphicon-search"></span>&nbsp;View Details </a>
 				<a href="{{pathFor 'updateJob'}}" class="discuss btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit </a>

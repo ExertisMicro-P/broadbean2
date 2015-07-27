@@ -11,12 +11,14 @@ Jobs = new Meteor.Collection('jobs',
         },
         username: {
             type: String,
-            label: "Username"
+            label: "Username",
+           optional: true,
         },
         password: {
             type: String,
             label: "Password",
-            min: 3
+            min: 3,
+           optional: true,
         },
         contact_name: {
             type: String,

@@ -87,6 +87,26 @@ RESTstop.add('jobs', {
 	Jobs.find({}).forEach(function(job) {
     // Filter out any expired jobs
     skip = false;
+    
+     var jobswiththisref = Jobs.find({job_reference: job.job_reference});
+    
+    if(jobswiththisref.count() > 1) {
+      console.log('DUPLICATES for '+job.job_reference+ 'FOUND!');
+      console.log(JSON.stringify(jobswiththisref.fetch()));
+      
+      // get the latest job with this reference
+       var newestjobswiththisref = Jobs.findOne({
+          job_reference: job.job_reference}, {sort: {createdAt: -1}}
+        );
+      
+      // remove all others
+      Jobs.remove({
+            job_reference: job.job_reference,
+            _id: { $ne : newestjobswiththisref._id}
+          }
+        );
+    }
+    
     if (job.createdAt) {
       expiresAt = new Date(job.createdAt);
       expiresAt.setDate(expiresAt.getDate() + job.days_to_advertise); 
@@ -94,6 +114,7 @@ RESTstop.add('jobs', {
         skip = true;
       }
     } else {
+      //job.expiresAt = expiresAt;
      /* 
      // frig to setup initial createdAt on some existing records
      Jobs.update(job._id,
@@ -114,6 +135,9 @@ RESTstop.add('jobs', {
       if (job.job_description) {
         job.job_description = marked(job.job_description.toString());      
       }
+      
+      // hide password
+      job.password = '****';
 
       storedjobs.push({
         'job' : job
@@ -237,7 +261,29 @@ function handleData(err, data) {
     switch(cmd) {
       case 'add':
         console.log('COMMAND=' + cmd);
+        
+        Email.send({
+          to: 'russell.hutson@exertis.co.uk',
+          from: 'russell.hutson@exertis.co.uk',
+          subject: "Meteor Broadbean - Add attempted",
+          text: JSON.stringify(result)
+        });
+        
+        
         addFuture = new Future();
+        /// check if we already have this job reference
+        var jobwiththisref = Jobs.findOne({
+          job_reference: result.job.job_reference,
+        });
+        
+        // if so remove all of them first, before adding new or update one        
+        if (jobwiththisref) {
+          console.log('Removing: All jobs with ref '+result.job.job_reference);
+          Jobs.remove({job_reference: result.job.job_reference});
+        } else {
+          console.log('No existing jobs with ref '+result.job.job_reference);
+        }
+        result.job.password = '****';
         Jobs.insert(result.job, insertCallback);
         restFuture.
         return (addFuture.wait());
@@ -259,14 +305,16 @@ function handleData(err, data) {
           _id : result.job.id
         });
         
-        /*
+        
         if (!jobtodelete) {
-          // wasn't found. try searching again using id as _id
-          jobtodelete = Jobs.findOne({
-            _id : result.job.id
-          });
+         Email.send({
+          to: 'russell.hutson@exertis.co.uk',
+          from: 'russell.hutson@exertis.co.uk',
+          subject: "Meteor Broadbean - Delete not found!",
+          text: JSON.stringify(result)
+        });
         }
-        */
+        
       
         if (jobtodelete) {
           console.log('Searching complete. Found'+jobtodelete._id);          

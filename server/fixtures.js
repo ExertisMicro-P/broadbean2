@@ -37,7 +37,7 @@ Set header = Content-Type : application/x-www-form-urlencoded
     <job_startdate>ASAP</job_startdate>
     <job_skills>VB, C++, PERL, Java</job_skills>
     <job_description>This is the detailed description</job_description>
-    <job_location>London</job_location>
+    <job_location>Basingstoke</job_location>
     <job_industry>Marketing</job_industry>
     <salary_currency>gbp</salary_currency>
     <salary_from>25000</salary_from>
